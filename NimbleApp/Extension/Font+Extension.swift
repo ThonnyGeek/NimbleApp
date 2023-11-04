@@ -16,17 +16,7 @@ extension Font {
         return Font.custom("Neuzeit S LT Std Book Heavy", size: size)
     }
     
-    static func poppinsBold(_ size: CGFloat) -> Font {
-        return Font.custom("Poppins-Bold", size: size)
-    }
-}
-
-extension UIFont {
-    static func poppinsBold(_ size: CGFloat) -> UIFont {
-        return UIFont(name: "Poppins-Bold", size: size)!
-    }
-    
-    static func poppinsSemiBold(_ size: CGFloat) -> UIFont {
-        return UIFont(name: "Poppins-SemiBold", size: size)!
+    static func neuzeitBold(_ size: CGFloat) -> Font {
+        return Font.custom("Neuzeit S LT BookHeavy", size: size)
     }
 }
