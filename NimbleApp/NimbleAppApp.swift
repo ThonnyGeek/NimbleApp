@@ -13,8 +13,7 @@ struct NimbleAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-//            MainView()
-            HomeView()
+            MainView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

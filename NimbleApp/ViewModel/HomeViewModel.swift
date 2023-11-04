@@ -7,13 +7,6 @@
 
 import Foundation
 
-//struct HomeTab: Hashable {
-//    let id: Int
-//    let title: String
-//    let body: String
-//    let backgroundImgName: String
-//}
-
 enum HomeTab: Hashable {
     case workingFromHome
     case careerTraining
@@ -64,22 +57,63 @@ enum HomeTab: Hashable {
     }
 }
 
+//struct HomeFirstStep: Hashable {
+//    let id: Int
+//    let option: String
+//}
+
+enum HomeFirstStep: Hashable {
+    case veryFulfilled
+    case somewhatFulfilled
+    case somewhatUnfulfilled
+    case veryUnfulfilled
+    
+    var text: String {
+        switch self {
+        case .veryFulfilled:
+            return "Very fulfilled"
+        case .somewhatFulfilled:
+            return "Somewhat fulfilled"
+        case .somewhatUnfulfilled:
+            return "Somewhat unfulfilled"
+        case .veryUnfulfilled:
+            return "Very unfulfilled"
+        }
+    }
+}
+
 final class HomeViewModel: ObservableObject {
     
     //MARK: Variables
     
     @Published var showMenu: Bool = false
+    
     var presentDate = Date()
+    
     @Published var tabSelected: HomeTab = .workingFromHome
+    
+    @Published var showSkeletonAnimation: Bool = false
+    
+    @Published var isLoadingData: Bool = true
+    
+    @Published var surveySelected: HomeTab?
+    
+    @Published var surveyStep: Int?
+    @Published var fisrtStepOptionSelected: HomeFirstStep?// = .veryFulfilled
     
     //MARK: Constants
     let dateFormatter = DateFormatter()
     
     let homeTabs: [HomeTab] = [.workingFromHome, .careerTraining, .inclusionBelongig]
     
+    let fisrtStepOptions: [HomeFirstStep] = [.veryFulfilled, .somewhatFulfilled, .somewhatUnfulfilled, .veryUnfulfilled]
+    
     //MARK: init
     init() {
         dateFormatter.dateFormat = "EEEE, MMMM d"
+        
+//        isLoadingData = false
+//        surveySelected = tabSelected
     }
     
     //MARK: Functions

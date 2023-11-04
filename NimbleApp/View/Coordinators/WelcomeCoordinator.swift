@@ -12,7 +12,7 @@ open class WelcomeFlowState: ObservableObject {
 }
 
 enum WelcomeLink: Hashable, Identifiable {
-case link
+case home
     
     var id: String {
         String(describing: self)
@@ -27,15 +27,17 @@ struct WelcomeFlowCoordinator<Content: View>: View {
     var body: some View {
         NavigationStack(path: $state.coverPath) {
             content()
-//                .sheet(item: <#$state.presentedItem#>, content: <#sheetContent#>)
                 .navigationDestination(for: WelcomeLink.self, destination: linkDestination)
         }
     }
     
     @ViewBuilder private func linkDestination(link: WelcomeLink) -> some View {
         switch link {
-        case .link:
-            EmptyView()
+        case .home:
+            HomeView(state: $state.coverPath)
+                .ignoresSafeArea()
+                .navigationBarBackButtonHidden()
         }
     }
 }
+

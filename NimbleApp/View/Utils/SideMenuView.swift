@@ -39,6 +39,8 @@ struct SideMenuViewContents: View {
     
     @Binding var presentSideMenu: Bool
     
+    let logoutAction: () -> Void
+    
     var body: some View {
         ZStack {
             
@@ -70,6 +72,7 @@ struct SideMenuViewContents: View {
                     .padding(.bottom, 35)
                 
                 Button {
+                    logoutAction()
                 } label: {
                     Text("Logout")
                         .font(.neuzeitBook(20))
@@ -94,13 +97,13 @@ struct SideMenuViewContents: View {
 struct SideMenuViewContentsView: View {
     @State var isShowing: Bool = false
     
-    let backgroundColor = Color(#colorLiteral(red: 0.1176470588, green: 0.1176470588, blue: 0.1176470588, alpha: 1)) // #1E1E1E
-    
     var body: some View {
-        SideMenuViewContents(presentSideMenu: $isShowing)
-            .frame(width: Constants.Sizes.width * 0.65)
-            .frame(maxWidth: .infinity, alignment: .trailing)
-            .background(backgroundColor)
+        SideMenuViewContents(presentSideMenu: $isShowing) {
+            
+        }
+        .frame(width: Constants.Sizes.width * 0.65)
+        .frame(maxWidth: .infinity, alignment: .trailing)
+        .background(Color.darkBackgroundColor)
     }
 }
 

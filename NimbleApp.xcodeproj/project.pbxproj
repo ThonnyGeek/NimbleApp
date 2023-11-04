@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8525E2AA2AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8525E2A92AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf */; };
+		8594C7BE2AF5DFB2005A9946 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8594C7BD2AF5DFB2005A9946 /* View+Extension.swift */; };
+		8594C7C02AF5DFE2005A9946 /* PageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8594C7BF2AF5DFE2005A9946 /* PageIndicator.swift */; };
 		85B5BAA62AF5760500906B5C /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B5BAA52AF5760500906B5C /* SideMenuView.swift */; };
 		85CC908D2AF43FBB008410E4 /* NimbleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC908C2AF43FBB008410E4 /* NimbleAppApp.swift */; };
 		85CC908F2AF43FBB008410E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC908E2AF43FBB008410E4 /* ContentView.swift */; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		8525E2A92AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Neuzeit S LT BookHeavy.ttf"; sourceTree = "<group>"; };
+		8594C7BD2AF5DFB2005A9946 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		8594C7BF2AF5DFE2005A9946 /* PageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicator.swift; sourceTree = "<group>"; };
 		85B5BAA52AF5760500906B5C /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		85CC90892AF43FBB008410E4 /* NimbleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NimbleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85CC908C2AF43FBB008410E4 /* NimbleAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NimbleAppApp.swift; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 			children = (
 				85CC90C42AF44759008410E4 /* Color+Extension.swift */,
 				85CC90CD2AF45388008410E4 /* Font+Extension.swift */,
+				8594C7BD2AF5DFB2005A9946 /* View+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 				85CC90CF2AF456C7008410E4 /* Buttons */,
 				85CC90C92AF44C31008410E4 /* MainTextField.swift */,
 				85B5BAA52AF5760500906B5C /* SideMenuView.swift */,
+				8594C7BF2AF5DFE2005A9946 /* PageIndicator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -397,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85CC90962AF43FBC008410E4 /* Persistence.swift in Sources */,
+				8594C7C02AF5DFE2005A9946 /* PageIndicator.swift in Sources */,
 				85B5BAA62AF5760500906B5C /* SideMenuView.swift in Sources */,
 				85CC90C52AF44759008410E4 /* Color+Extension.swift in Sources */,
 				85CC90D12AF456D1008410E4 /* PrimaryButtonStyle.swift in Sources */,
@@ -412,6 +419,7 @@
 				85CC908D2AF43FBB008410E4 /* NimbleAppApp.swift in Sources */,
 				85CC90E32AF49829008410E4 /* InAppNotification.swift in Sources */,
 				85CC90CE2AF45388008410E4 /* Font+Extension.swift in Sources */,
+				8594C7BE2AF5DFB2005A9946 /* View+Extension.swift in Sources */,
 				85CC90C72AF4494C008410E4 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

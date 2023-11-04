@@ -7,44 +7,6 @@
 
 import SwiftUI
 
-/*
- @StateObject var state = WelcomeFlowState(
- 
-//    struct <#Content View#>: View {
-//
-//        @StateObject var viewModel: <#Content ViewModel#>
-//
-//        var body: some View {
-//            <#Content FlowCoordinator#>(state: viewModel, content: content)
-//        }
-//
-//        @ViewBuilder private func content() -> some View {
-//            <#ZStack { }#>
-//        }
-//    }
- 
- var body: some View {
-     WelcomeFlowCoordinator(state: state, content: content)
- }
- 
- @ViewBuilder private func content() -> some View {
-     ZStack {
-         background
-         
-         VStack (spacing: 109) {
-             if viewModel.showLogo {
-                 Image("mainLogoWhite")
-             }
-             
-             if viewModel.showLogin {
-                 content()
-             }
-         }
-         .offset(CGSize(width: 0, height: viewModel.showLogin ? -50 : 0))
-     }
- }
- */
-
 struct MainView: View {
     
     @StateObject var viewModel = MainViewModel()
@@ -96,9 +58,6 @@ struct MainView: View {
                 .frame(maxWidth: Constants.Sizes.width * 0.9, maxHeight: Constants.Sizes.height - 100, alignment: .topLeading)
             }
         }
-        .onAppear {
-            InAppNotificationManager.shared.showSuccess("Appears")
-        }
     }
     
     private var background: some View {
@@ -145,10 +104,10 @@ struct MainView: View {
             Button {
                 if viewModel.showPasswordRecoveryView {
                     //Log In
-                    InAppNotificationManager.shared.showSuccess("Log In")
+                    state.coverPath.append(WelcomeLink.home)
                 } else {
                     //SignUp
-                    InAppNotificationManager.shared.showSuccess("Sign Up")
+                    state.coverPath.append(WelcomeLink.home)
                 }
             } label: {
                 Text(viewModel.showPasswordRecoveryView ? "Reset" : "Log In")
@@ -163,3 +122,4 @@ struct MainView: View {
 #Preview {
     MainView()
 }
+
