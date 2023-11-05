@@ -62,7 +62,7 @@ enum HomeTab: Hashable {
 //    let option: String
 //}
 
-enum HomeFirstStep: Hashable {
+enum HomeFirstStep: Hashable, CaseIterable {
     case veryFulfilled
     case somewhatFulfilled
     case somewhatUnfulfilled
@@ -96,10 +96,15 @@ final class HomeViewModel: ObservableObject {
     
     @Published var isLoadingData: Bool = true
     
+    @Published var showMainInfo: Bool = true
+    
     @Published var surveySelected: HomeTab?
     
     @Published var surveyStep: Int?
-    @Published var fisrtStepOptionSelected: HomeFirstStep?// = .veryFulfilled
+    @Published var showConfirmSurvey: Bool = false
+//    @Published var fisrtStepOptionSelected: HomeFirstStep?// = .veryFulfilled
+    @Published var fisrtStepOptionSelected: String? = HomeFirstStep.veryFulfilled.text// = .veryFulfilled
+    @Published var showFirstStep: Bool = false
     
     //MARK: Constants
     let dateFormatter = DateFormatter()

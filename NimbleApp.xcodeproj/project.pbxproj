@@ -10,6 +10,16 @@
 		8525E2AA2AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8525E2A92AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf */; };
 		8594C7BE2AF5DFB2005A9946 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8594C7BD2AF5DFB2005A9946 /* View+Extension.swift */; };
 		8594C7C02AF5DFE2005A9946 /* PageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8594C7BF2AF5DFE2005A9946 /* PageIndicator.swift */; };
+		85ABA59B2AF6E3A30072CC19 /* CustomWheelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA59A2AF6E3A30072CC19 /* CustomWheelPickerView.swift */; };
+		85ABA59E2AF6FFFB0072CC19 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA59D2AF6FFFB0072CC19 /* StepsView.swift */; };
+		85ABA5A12AF705660072CC19 /* SecondaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA5A02AF705660072CC19 /* SecondaryButtonStyle.swift */; };
+		85ABA5A32AF72A480072CC19 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA5A22AF72A480072CC19 /* TestView.swift */; };
+		85ABA5A52AF7479D0072CC19 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA5A42AF7479D0072CC19 /* RatingView.swift */; };
+		85ABA5A72AF74D260072CC19 /* QuestionNPSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA5A62AF74D260072CC19 /* QuestionNPSView.swift */; };
+		85ABA5A92AF756BD0072CC19 /* FirstStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA5A82AF756BD0072CC19 /* FirstStepView.swift */; };
+		85ABA5AB2AF7574E0072CC19 /* ThirdStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA5AA2AF7574E0072CC19 /* ThirdStepView.swift */; };
+		85ABA5AD2AF758000072CC19 /* FourthStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA5AC2AF758000072CC19 /* FourthStepView.swift */; };
+		85ABA5AF2AF758AB0072CC19 /* FifthStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA5AE2AF758AB0072CC19 /* FifthStepView.swift */; };
 		85B5BAA62AF5760500906B5C /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B5BAA52AF5760500906B5C /* SideMenuView.swift */; };
 		85CC908D2AF43FBB008410E4 /* NimbleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC908C2AF43FBB008410E4 /* NimbleAppApp.swift */; };
 		85CC908F2AF43FBB008410E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC908E2AF43FBB008410E4 /* ContentView.swift */; };
@@ -57,6 +67,16 @@
 		8525E2A92AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Neuzeit S LT BookHeavy.ttf"; sourceTree = "<group>"; };
 		8594C7BD2AF5DFB2005A9946 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		8594C7BF2AF5DFE2005A9946 /* PageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicator.swift; sourceTree = "<group>"; };
+		85ABA59A2AF6E3A30072CC19 /* CustomWheelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWheelPickerView.swift; sourceTree = "<group>"; };
+		85ABA59D2AF6FFFB0072CC19 /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
+		85ABA5A02AF705660072CC19 /* SecondaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonStyle.swift; sourceTree = "<group>"; };
+		85ABA5A22AF72A480072CC19 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		85ABA5A42AF7479D0072CC19 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		85ABA5A62AF74D260072CC19 /* QuestionNPSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionNPSView.swift; sourceTree = "<group>"; };
+		85ABA5A82AF756BD0072CC19 /* FirstStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStepView.swift; sourceTree = "<group>"; };
+		85ABA5AA2AF7574E0072CC19 /* ThirdStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdStepView.swift; sourceTree = "<group>"; };
+		85ABA5AC2AF758000072CC19 /* FourthStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthStepView.swift; sourceTree = "<group>"; };
+		85ABA5AE2AF758AB0072CC19 /* FifthStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthStepView.swift; sourceTree = "<group>"; };
 		85B5BAA52AF5760500906B5C /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		85CC90892AF43FBB008410E4 /* NimbleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NimbleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85CC908C2AF43FBB008410E4 /* NimbleAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NimbleAppApp.swift; sourceTree = "<group>"; };
@@ -112,6 +132,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85ABA59C2AF6FFBC0072CC19 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				85ABA59D2AF6FFFB0072CC19 /* StepsView.swift */,
+				85ABA5A82AF756BD0072CC19 /* FirstStepView.swift */,
+				85ABA5AA2AF7574E0072CC19 /* ThirdStepView.swift */,
+				85ABA5AC2AF758000072CC19 /* FourthStepView.swift */,
+				85ABA5AE2AF758AB0072CC19 /* FifthStepView.swift */,
+			);
+			path = Steps;
+			sourceTree = "<group>";
+		};
 		85CC90802AF43FBB008410E4 = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +212,7 @@
 		85CC90BB2AF44102008410E4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				85ABA59C2AF6FFBC0072CC19 /* Steps */,
 				85CC90BE2AF4434A008410E4 /* MainView.swift */,
 				85CC90DE2AF48997008410E4 /* Coordinators */,
 				85CC90C82AF44C13008410E4 /* Utils */,
@@ -230,6 +263,10 @@
 				85CC90C92AF44C31008410E4 /* MainTextField.swift */,
 				85B5BAA52AF5760500906B5C /* SideMenuView.swift */,
 				8594C7BF2AF5DFE2005A9946 /* PageIndicator.swift */,
+				85ABA59A2AF6E3A30072CC19 /* CustomWheelPickerView.swift */,
+				85ABA5A22AF72A480072CC19 /* TestView.swift */,
+				85ABA5A42AF7479D0072CC19 /* RatingView.swift */,
+				85ABA5A62AF74D260072CC19 /* QuestionNPSView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -248,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				85CC90D02AF456D1008410E4 /* PrimaryButtonStyle.swift */,
+				85ABA5A02AF705660072CC19 /* SecondaryButtonStyle.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -402,25 +440,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85ABA5AB2AF7574E0072CC19 /* ThirdStepView.swift in Sources */,
+				85ABA5A12AF705660072CC19 /* SecondaryButtonStyle.swift in Sources */,
 				85CC90962AF43FBC008410E4 /* Persistence.swift in Sources */,
 				8594C7C02AF5DFE2005A9946 /* PageIndicator.swift in Sources */,
+				85ABA5A52AF7479D0072CC19 /* RatingView.swift in Sources */,
 				85B5BAA62AF5760500906B5C /* SideMenuView.swift in Sources */,
+				85ABA5AD2AF758000072CC19 /* FourthStepView.swift in Sources */,
 				85CC90C52AF44759008410E4 /* Color+Extension.swift in Sources */,
+				85ABA59E2AF6FFFB0072CC19 /* StepsView.swift in Sources */,
 				85CC90D12AF456D1008410E4 /* PrimaryButtonStyle.swift in Sources */,
 				85CC90E92AF4BACE008410E4 /* HomeViewModel.swift in Sources */,
 				85CC90E72AF4AB30008410E4 /* HomeView.swift in Sources */,
 				85CC90E02AF489AA008410E4 /* WelcomeCoordinator.swift in Sources */,
+				85ABA5AF2AF758AB0072CC19 /* FifthStepView.swift in Sources */,
 				85CC90E52AF49844008410E4 /* CustomNotificationView.swift in Sources */,
 				85CC908F2AF43FBB008410E4 /* ContentView.swift in Sources */,
+				85ABA5A72AF74D260072CC19 /* QuestionNPSView.swift in Sources */,
 				85CC90C22AF44435008410E4 /* Constans.swift in Sources */,
 				85CC90992AF43FBC008410E4 /* NimbleApp.xcdatamodeld in Sources */,
 				85CC90BF2AF4434A008410E4 /* MainView.swift in Sources */,
+				85ABA5A92AF756BD0072CC19 /* FirstStepView.swift in Sources */,
 				85CC90CA2AF44C31008410E4 /* MainTextField.swift in Sources */,
 				85CC908D2AF43FBB008410E4 /* NimbleAppApp.swift in Sources */,
 				85CC90E32AF49829008410E4 /* InAppNotification.swift in Sources */,
 				85CC90CE2AF45388008410E4 /* Font+Extension.swift in Sources */,
+				85ABA5A32AF72A480072CC19 /* TestView.swift in Sources */,
 				8594C7BE2AF5DFB2005A9946 /* View+Extension.swift in Sources */,
 				85CC90C72AF4494C008410E4 /* MainViewModel.swift in Sources */,
+				85ABA59B2AF6E3A30072CC19 /* CustomWheelPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
