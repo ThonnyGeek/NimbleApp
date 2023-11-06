@@ -52,6 +52,8 @@ final class MainViewModel: ObservableObject {
     
     //MARK: init
     init() {
+        print("MainViewModel init() ")
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             withAnimation {
                 self.showLogo = true
@@ -126,7 +128,7 @@ final class MainViewModel: ObservableObject {
             .sink(receiveCompletion: Constants.onReceive) { result in
                 
                 guard let data = result.data else {
-                    InAppNotificationManager.shared.showError(result.errors?.first?.code ?? "API connection error", subtitle: result.errors?.first?.detail)
+                    InAppNotificationManager.shared.showError("Login: \(result.errors?.first?.code)" ?? "API connection error", subtitle: result.errors?.first?.detail)
                     return
                 }
                 

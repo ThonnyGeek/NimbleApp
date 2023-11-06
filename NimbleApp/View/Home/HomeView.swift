@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @ObservedObject var viewModel: HomeViewModel
+    @StateObject var viewModel: HomeViewModel = HomeViewModel()
     
     @Binding var state: NavigationPath
     

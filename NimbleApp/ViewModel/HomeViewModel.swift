@@ -61,25 +61,23 @@ final class HomeViewModel: ObservableObject {
     //MARK: Constants
     let dateFormatter = DateFormatter()
     
-//    let homeTabs: [HomeTab] = [.workingFromHome, .careerTraining, .inclusionBelongig]
-    
     let fisrtStepOptions: [HomeFirstStep] = [.veryFulfilled, .somewhatFulfilled, .somewhatUnfulfilled, .veryUnfulfilled]
     
     let homeService: HomeService = HomeService()
     
     //MARK: init
     init() {
-        print("init() {")
-        fetchSurveys(page: 1) { tokenWasRefreshed in
-            if tokenWasRefreshed {
-                self.fetchSurveys(page: 1)
+        print("HomeViewModel init() ")
+        if UserManager.shared.isUserAuthorized {
+            fetchSurveys(page: 1) { tokenWasRefreshed in
+                if tokenWasRefreshed {
+                    self.fetchSurveys(page: 1)
+                }
             }
         }
         
         
         dateFormatter.dateFormat = "EEEE, MMMM d"
-        
-//        tabSelected = surveysData.first ?? .init(id: "1", type: "12", attributes: SurveyListDataAttributes(title: "aa", description: "bb", coverImageURL: ""))
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             print("dqm")
