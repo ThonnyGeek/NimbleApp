@@ -22,6 +22,8 @@ case home
 struct WelcomeFlowCoordinator<Content: View>: View {
     
     @ObservedObject var state: WelcomeFlowState
+//    @ObservedObject var viewModel: HomeViewModel = HomeViewModel()
+    
     let content: () -> Content
     
     var body: some View {
@@ -34,7 +36,8 @@ struct WelcomeFlowCoordinator<Content: View>: View {
     @ViewBuilder private func linkDestination(link: WelcomeLink) -> some View {
         switch link {
         case .home:
-            HomeView(state: $state.coverPath)
+            var homeViewModel = HomeViewModel()
+            HomeView(viewModel: homeViewModel, state: $state.coverPath)
                 .ignoresSafeArea()
                 .navigationBarBackButtonHidden()
         }

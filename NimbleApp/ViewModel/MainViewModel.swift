@@ -101,6 +101,18 @@ final class MainViewModel: ObservableObject {
         checkPasswordText()
     }
     
+    func mainButtonAction(onSuccess: @escaping () -> Void) {
+        if self.showPasswordRecoveryView {
+            //Password Recovery
+            onSuccess()
+        } else {
+            //Log In
+            self.login {
+                onSuccess()
+            }
+        }
+    }
+    
     func login(onSuccess: @escaping () -> Void) {
         storeData()
         

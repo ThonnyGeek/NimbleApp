@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @ObservedObject var viewModel = HomeViewModel()
+    @ObservedObject var viewModel: HomeViewModel
     
     @Binding var state: NavigationPath
     
@@ -48,7 +48,8 @@ struct HomeView: View {
             .zIndex(1.0)
             
             
-            SideMenu()
+            sideMenu()
+                .zIndex(1.0)
         }
         .background(.gray)
         .onAppear {
@@ -97,11 +98,12 @@ struct HomeView: View {
     }
     
     @ViewBuilder
-    private func SideMenu() -> some View {
+    private func sideMenu() -> some View {
         
         SideMenuView(isShowing: $viewModel.showMenu, direction: .trailing) {
             SideMenuViewContents(presentSideMenu: $viewModel.showMenu) {
                 state.removeLast(state.count)
+                UserManager.shared.logout()
             }
             .frame(width: Constants.Sizes.width * 0.65)
             .frame(maxHeight: .infinity)
@@ -296,6 +298,6 @@ struct HomeView: View {
     
 }
 
-#Preview {
-    HomeView(state: .constant(NavigationPath()))
-}
+//#Preview {
+//    HomeView(viewModel: HomeViewModel(), state: .constant(NavigationPath()))
+//}

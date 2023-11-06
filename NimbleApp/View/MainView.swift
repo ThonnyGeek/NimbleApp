@@ -110,14 +110,8 @@ struct MainView: View {
             }
             
             Button {
-                if viewModel.showPasswordRecoveryView {
-                    //Password Recovery
+                viewModel.mainButtonAction {
                     openHome()
-                } else {
-                    //Log In
-                    viewModel.login {
-                        openHome()
-                    }
                 }
             } label: {
                 Text(viewModel.showPasswordRecoveryView ? "Reset" : "Log In")
