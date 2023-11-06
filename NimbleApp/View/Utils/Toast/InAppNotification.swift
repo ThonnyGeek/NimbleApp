@@ -53,7 +53,7 @@ class InAppNotificationManager {
     
     func showSuccess(_ text: String, subtitle: String? = nil, onSuccess: (() -> Void)? = nil) {
         
-        let successNotification = UIHostingController(rootView: CustomNotificationView())
+        let successNotification = UIHostingController(rootView: CustomNotificationView(text: text, subtitle: subtitle))
         
         let notification = InAppNotification(contentView: successNotification.view)
         notification.show() {
@@ -69,7 +69,7 @@ class InAppNotificationManager {
     
     func showWarning(_ text: String, subtitle: String? = nil, onSuccess: (() -> Void)? = nil) {
         
-        let successNotification = UIHostingController(rootView: CustomNotificationView())
+        let successNotification = UIHostingController(rootView: CustomNotificationView(text: text, subtitle: subtitle))
         
         let notification = InAppNotification(contentView: successNotification.view)
         notification.show() {
@@ -85,7 +85,7 @@ class InAppNotificationManager {
     
     func showError(_ text: String, subtitle: String? = nil, onSuccess: (() -> Void)? = nil) {
         
-        let successNotification = UIHostingController(rootView: CustomNotificationView())
+        let successNotification = UIHostingController(rootView: CustomNotificationView(text: text, subtitle: subtitle))
         
         let notification = InAppNotification(contentView: successNotification.view)
         notification.show() {

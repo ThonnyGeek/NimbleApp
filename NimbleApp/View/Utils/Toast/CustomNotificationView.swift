@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CustomNotificationView: View {
+
+    var text: String
+    var subtitle: String?
     
     var body: some View {
         ZStack (alignment: .bottom) {
@@ -24,13 +27,15 @@ struct CustomNotificationView: View {
                     .frame(width: 25, height: 25)
                 
                 VStack (alignment: .leading, spacing: 0) {
-                    Text("Check your email.")
+                    Text(text/*"Check your email."*/)
                         .font(.neuzeitSemiBold(15))
                         .foregroundColor(.white)
                     
-                    Text("We’ve email you instructions to reset your password.")
-                        .font(.neuzeitBook(13))
-                        .foregroundColor(.white)
+                    if let subtitle = subtitle {
+                        Text(subtitle/*"We’ve email you instructions to reset your password."*/)
+                            .font(.neuzeitBook(13))
+                            .foregroundColor(.white)
+                    }
                 }
                 .frame(width: Constants.Sizes.width * 0.7, alignment: .leading)
             }
@@ -42,14 +47,14 @@ struct CustomNotificationView: View {
     }
 }
 
-#Preview {
-    ZStack {
-        
-        Color.black
-        
-        CustomNotificationView()
-    }
-}
+//#Preview {
+//    ZStack {
+//        
+//        Color.black
+//        
+//        CustomNotificationView()
+//    }
+//}
 
 /*
  struct CustomNotificationView: View {

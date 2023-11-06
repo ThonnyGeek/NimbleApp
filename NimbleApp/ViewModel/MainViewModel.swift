@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import Alamofire
 
 final class MainViewModel: ObservableObject {
     
@@ -17,12 +18,15 @@ final class MainViewModel: ObservableObject {
     
     
     @Published var emailText: String = ""
-    @KeyChain(key:  "user_email", account: "NimbleApp") var storedEmail //: String = ""
+    @KeyChain(key:  "user_email", account: Constants.keyAccountName) var storedEmail //: String = ""
     
     @Published var passwordText: String = ""
-    @KeyChain(key:  "user_password", account: "NimbleApp")  var storedPassword //: String = ""
+    @KeyChain(key:  "user_password", account: Constants.keyAccountName)  var storedPassword //: String = ""
+    
+    private var subscriptions = Set<AnyCancellable>()
     
     //MARK: Constants
+    let authService: AuthService = AuthService()
     
     //MARK: init
     init() {
@@ -43,10 +47,30 @@ final class MainViewModel: ObservableObject {
     
     //MARK: Functions
     
-    func login() {
+    func login(onSuccess: @escaping () -> Void) {
         storeData()
         
+        let params: Parameters = [
+            "grant_type": "password",
+            "email": self.emailText,
+            "password": self.passwordText
+        ]
         
+        self.authService.login(params: params)
+            .sink(receiveCompletion: Constants.onReceive) { result in
+                
+                guard let data = result.data else {
+                    InAppNotificationManager.shared.showError(result.errors?.first?.code ?? "API connection error", subtitle: result.errors?.first?.detail)
+                    return
+                }
+                
+                UserManager.shared.authorize(access_token: data.attributes.accessToken, expires_in: data.attributes.expiresIn.description, refresh_token: data.attributes.refreshToken)
+                
+                print("result: \(result)")
+                
+                onSuccess()
+            }
+            .store(in: &subscriptions)
     }
     
     private func storeData() {

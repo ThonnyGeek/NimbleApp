@@ -10,6 +10,9 @@
 		8525E2AA2AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8525E2A92AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf */; };
 		8594C7BE2AF5DFB2005A9946 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8594C7BD2AF5DFB2005A9946 /* View+Extension.swift */; };
 		8594C7C02AF5DFE2005A9946 /* PageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8594C7BF2AF5DFE2005A9946 /* PageIndicator.swift */; };
+		85A0AEA22AF8B46700427112 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 85A0AEA12AF8B46700427112 /* Alamofire */; };
+		85A0AEA42AF8B73900427112 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A0AEA32AF8B73900427112 /* UserManager.swift */; };
+		85A0AEA72AF8B7AA00427112 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A0AEA62AF8B7AA00427112 /* LoginResponse.swift */; };
 		85ABA59B2AF6E3A30072CC19 /* CustomWheelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA59A2AF6E3A30072CC19 /* CustomWheelPickerView.swift */; };
 		85ABA59E2AF6FFFB0072CC19 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA59D2AF6FFFB0072CC19 /* StepsView.swift */; };
 		85ABA5A12AF705660072CC19 /* SecondaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA5A02AF705660072CC19 /* SecondaryButtonStyle.swift */; };
@@ -71,6 +74,8 @@
 		8525E2A92AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Neuzeit S LT BookHeavy.ttf"; sourceTree = "<group>"; };
 		8594C7BD2AF5DFB2005A9946 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		8594C7BF2AF5DFE2005A9946 /* PageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicator.swift; sourceTree = "<group>"; };
+		85A0AEA32AF8B73900427112 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		85A0AEA62AF8B7AA00427112 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		85ABA59A2AF6E3A30072CC19 /* CustomWheelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWheelPickerView.swift; sourceTree = "<group>"; };
 		85ABA59D2AF6FFFB0072CC19 /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
 		85ABA5A02AF705660072CC19 /* SecondaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonStyle.swift; sourceTree = "<group>"; };
@@ -120,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85A0AEA22AF8B46700427112 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +146,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85A0AEA52AF8B7AA00427112 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				85A0AEA62AF8B7AA00427112 /* LoginResponse.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		85ABA59C2AF6FFBC0072CC19 /* Steps */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +246,7 @@
 		85CC90BC2AF441C9008410E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				85A0AEA52AF8B7AA00427112 /* Auth */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -248,6 +263,7 @@
 		85CC90C02AF4441E008410E4 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				85A0AEA32AF8B73900427112 /* UserManager.swift */,
 				85FC17E42AF86D4A00128A0D /* Networking */,
 				85FC17E12AF83EA400128A0D /* Auth */,
 				85CC90C12AF44435008410E4 /* Constans.swift */,
@@ -367,6 +383,9 @@
 			dependencies = (
 			);
 			name = NimbleApp;
+			packageProductDependencies = (
+				85A0AEA12AF8B46700427112 /* Alamofire */,
+			);
 			productName = NimbleApp;
 			productReference = 85CC90892AF43FBB008410E4 /* NimbleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -439,6 +458,9 @@
 				Base,
 			);
 			mainGroup = 85CC90802AF43FBB008410E4;
+			packageReferences = (
+				85A0AEA02AF8B46700427112 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 85CC908A2AF43FBB008410E4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -500,6 +522,7 @@
 				85CC90E02AF489AA008410E4 /* WelcomeCoordinator.swift in Sources */,
 				85ABA5AF2AF758AB0072CC19 /* FifthStepView.swift in Sources */,
 				85FC17E62AF86E0C00128A0D /* AuthService.swift in Sources */,
+				85A0AEA42AF8B73900427112 /* UserManager.swift in Sources */,
 				85CC90E52AF49844008410E4 /* CustomNotificationView.swift in Sources */,
 				85CC908F2AF43FBB008410E4 /* ContentView.swift in Sources */,
 				85FC17E32AF83EC300128A0D /* KeyChainPropertyWrapper.swift in Sources */,
@@ -517,6 +540,7 @@
 				8594C7BE2AF5DFB2005A9946 /* View+Extension.swift in Sources */,
 				85CC90C72AF4494C008410E4 /* MainViewModel.swift in Sources */,
 				85ABA59B2AF6E3A30072CC19 /* CustomWheelPickerView.swift in Sources */,
+				85A0AEA72AF8B7AA00427112 /* LoginResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,6 +874,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		85A0AEA02AF8B46700427112 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		85A0AEA12AF8B46700427112 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85A0AEA02AF8B46700427112 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		85CC90972AF43FBC008410E4 /* NimbleApp.xcdatamodeld */ = {

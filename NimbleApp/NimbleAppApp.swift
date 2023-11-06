@@ -9,22 +9,31 @@ import SwiftUI
 
 @main
 struct NimbleAppApp: App {
-    let persistenceController = PersistenceController.shared
+//    let persistenceController = PersistenceController.shared
+    
+    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+    
     var mainViewModel = MainViewModel()
 
     var body: some Scene {
         WindowGroup {
             MainView(viewModel: mainViewModel)
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .onAppear {
-                    
-//                    guard let emailData = KeyChainHelper.shared.read(key: "user_email", account: "NimbleApp"), let passwordData = KeyChainHelper.shared.read(key: "user_password", account: "NimbleApp") else {
-//                        return
-//                    }
-//                    
-//                    print("email: \(String(data: emailData, encoding: .utf8))")
-//                    print("password: \(String(data: passwordData, encoding: .utf8))")
-                }
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
+    }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        print("AppDelegate")
+        
+        @KeyChain(key: "client_id", account: Constants.keyAccountName) var cId
+        @KeyChain(key: "client_secret", account: Constants.keyAccountName) var cSecret
+        
+        cId = "ofzl-2h5ympKa0WqqTzqlVJUiRsxmXQmt5tkgrlWnOE".data(using: .utf8)
+        cSecret = "lMQb900L-mTeU-FVTCwyhjsfBwRCxwwbCitPob96cuU".data(using: .utf8)
+        
+        return true
     }
 }

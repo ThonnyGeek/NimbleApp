@@ -106,16 +106,18 @@ struct MainView: View {
             
             Button {
                 if viewModel.showPasswordRecoveryView {
-                    //Log In
+                    //Password Recovery
                     state.coverPath.append(WelcomeLink.home)
                 } else {
-                    //SignUp
-                    state.coverPath.append(WelcomeLink.home)
+                    //Log In
+                    viewModel.login {
+                        state.coverPath.append(WelcomeLink.home)
+                    }
                 }
-//                viewModel.login()
             } label: {
                 Text(viewModel.showPasswordRecoveryView ? "Reset" : "Log In")
                     .font(.neuzeitSemiBold(17))
+                    .foregroundStyle(.black)
             }
             .buttonStyle(PrimaryButtonStyle(backgroundColor: .white, cornerRadius: 10, verticalPadding: 17))
         }
@@ -123,7 +125,7 @@ struct MainView: View {
     }
 }
 
-//#Preview {
-//    MainView()
-//}
+#Preview {
+    MainView(viewModel: MainViewModel())
+}
 

@@ -125,9 +125,5 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
-    deinit {
-        print("DEINIOT ttt")
-    }
-    
     //MARK: Functions
 }
