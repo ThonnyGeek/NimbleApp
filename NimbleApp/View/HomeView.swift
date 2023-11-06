@@ -360,12 +360,14 @@ struct HomeView: View {
             SideMenu()
         }
         .onAppear {
-            withAnimation(.timingCurve(.linear, duration: 2).repeatForever(autoreverses: false)) {
-                viewModel.showSkeletonAnimation.toggle()
+            viewModel.showSkeletonAnimation = true
+            
+            if !viewModel.isLoadingData {
+                viewModel.isLoadingData = true
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                viewModel.isLoadingData = false
+            withAnimation(.timingCurve(.linear, duration: 2).repeatForever(autoreverses: false)) {
+                viewModel.showSkeletonAnimation.toggle()
             }
         }
     }
@@ -445,7 +447,6 @@ struct HomeView: View {
                             .animation(.easeInOut, value: viewModel.isLoadingData)
                     }
                     .tag(homeTab.id)
-                    
                 }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))

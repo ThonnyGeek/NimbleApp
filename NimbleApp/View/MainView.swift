@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MainView: View {
     
-    @StateObject var viewModel = MainViewModel()
+//    @StateObject var viewModel = MainViewModel()
+    @StateObject var viewModel: MainViewModel //= MainViewModel()
     
     @StateObject var state = WelcomeFlowState()
     
@@ -57,6 +58,8 @@ struct MainView: View {
                 }
                 .frame(maxWidth: Constants.Sizes.width * 0.9, maxHeight: Constants.Sizes.height - 100, alignment: .topLeading)
             }
+        }.onDisappear {
+            print("DISAPPEARS")
         }
     }
     
@@ -109,6 +112,7 @@ struct MainView: View {
                     //SignUp
                     state.coverPath.append(WelcomeLink.home)
                 }
+//                viewModel.login()
             } label: {
                 Text(viewModel.showPasswordRecoveryView ? "Reset" : "Log In")
                     .font(.neuzeitSemiBold(17))
@@ -119,7 +123,7 @@ struct MainView: View {
     }
 }
 
-#Preview {
-    MainView()
-}
+//#Preview {
+//    MainView()
+//}
 

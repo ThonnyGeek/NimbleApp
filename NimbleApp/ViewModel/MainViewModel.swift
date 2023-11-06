@@ -17,13 +17,16 @@ final class MainViewModel: ObservableObject {
     
     
     @Published var emailText: String = ""
-    @Published var passwordText: String = ""
+    @KeyChain(key:  "user_email", account: "NimbleApp") var storedEmail //: String = ""
     
+    @Published var passwordText: String = ""
+    @KeyChain(key:  "user_password", account: "NimbleApp")  var storedPassword //: String = ""
     
     //MARK: Constants
     
     //MARK: init
     init() {
+//        print("self.storedEmail: \(String(data: self.storedEmail ?? Data(), encoding: .utf8)) - self.storedPassword: \(String(data: self.storedPassword ?? Data(), encoding: .utf8))")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             withAnimation {
                 self.showLogo = true
@@ -37,5 +40,19 @@ final class MainViewModel: ObservableObject {
         }
     }
     
+    
     //MARK: Functions
+    
+    func login() {
+        storeData()
+        
+        
+    }
+    
+    private func storeData() {
+        print("self.storedEmail: \(self.storedEmail) - self.storedPassword: \(self.storedPassword)")
+        
+        self.storedEmail = self.emailText.data(using: .utf8)
+        self.storedPassword = self.passwordText.data(using: .utf8)
+    }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum HomeTab: Hashable {
     case workingFromHome
@@ -115,10 +116,17 @@ final class HomeViewModel: ObservableObject {
     
     //MARK: init
     init() {
+        print("init() {")
         dateFormatter.dateFormat = "EEEE, MMMM d"
         
-//        isLoadingData = false
-//        surveySelected = tabSelected
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            print("dqm")
+            self.isLoadingData = false
+        }
+    }
+    
+    deinit {
+        print("DEINIOT ttt")
     }
     
     //MARK: Functions
