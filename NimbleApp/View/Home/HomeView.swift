@@ -50,6 +50,7 @@ struct HomeView: View {
             
             SideMenu()
         }
+        .background(.gray)
         .onAppear {
             viewModel.showSkeletonAnimation = true
             
@@ -112,39 +113,76 @@ struct HomeView: View {
     private func tabView() -> some View {
         
         ZStack {
-            TabView(selection: $viewModel.tabSelected) {
-                ForEach(viewModel.homeTabs, id: \.self) { homeTab in
-                    ZStack {
-                        Image(homeTab.backgroundImgName)
-                            .resizable()
-                            .scaledToFill()
-                            .ignoresSafeArea()
-                            .frame(width: viewModel.surveySelected != nil ? Constants.Sizes.width + 300 : Constants.Sizes.width, height: viewModel.surveySelected != nil ? Constants.Sizes.height + 300 : Constants.Sizes.height)
-                            .transition(.scale)
-                            .animation(.easeInOut(duration: 1.2), value: viewModel.surveySelected)
-                        
-                        Color.mainGradient
-                            .frame(width: Constants.Sizes.width + 100)
-                            .opacity(0.4)
-                            .ignoresSafeArea()
-                            .blur(radius: 10)
-                        
-                        
-                        Color.darkBackgroundColor
-                            .ignoresSafeArea()
-                            .frame(width: Constants.Sizes.width, height: Constants.Sizes.height)
-                            .opacity(viewModel.isLoadingData ? 1 : 0)
-                            .transition(.opacity)
-                            .animation(.easeInOut, value: viewModel.isLoadingData)
+            ScrollView {
+                TabView(selection: $viewModel.tabSelected) {
+                    
+                    ForEach(viewModel.surveysData, id: \.self) { survey in
+                        ZStack {
+                            
+                            let imageHeight = Constants.Sizes.height + (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0)
+                            
+                            AsyncImage(url: URL(string: "\(survey.attributes.coverImageURL)l")) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                                    .scaleEffect(viewModel.surveySelected != nil ? 1.2 : 1, anchor: .bottom)
+                                    .frame(width: Constants.Sizes.width, height: Constants.Sizes.height + (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0))
+                                    .clipped()
+                                    .transition(.scale)
+                                    .animation(.easeInOut(duration: 1.2), value: viewModel.surveySelected)
+                            } placeholder: {
+                                Image(systemName: "photo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 150, height: 150)
+                                    .foregroundColor(.gray)
+                                    .frame(maxWidth: .infinity)
+                            }
+                                
+                            
+                            Color.mainGradient
+                                .frame(width: Constants.Sizes.width + 100)
+                                .opacity(0.5)
+                                .ignoresSafeArea()
+                                .blur(radius: 10)
+                            
+                            Color.black
+                                .ignoresSafeArea()
+                                .blur(radius: 10)
+                                .opacity(viewModel.showFirstStep ? 0.5 : 0)
+                            
+                            Color.darkBackgroundColor
+                                .ignoresSafeArea()
+                                .frame(width: Constants.Sizes.width, height: Constants.Sizes.height)
+                                .opacity(viewModel.isLoadingData ? 1 : 0)
+                                .transition(.opacity)
+                                .animation(.easeInOut, value: viewModel.isLoadingData)
+                            
+                            if survey == viewModel.surveysData[viewModel.surveysData.count - 1] {
+                                Color.clear
+                                    .onAppear {
+                                        guard let surveysResponseMeta = viewModel.surveysResponseMeta else { return }
+                                        if surveysResponseMeta.page + 1 < surveysResponseMeta.pages {
+                                            viewModel.fetchSurveys(page: surveysResponseMeta.page + 1)
+                                        }
+                                    }
+                            }
+                        }
                     }
-                    .tag(homeTab.id)
                 }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .ignoresSafeArea()
+                .frame(width: Constants.Sizes.width, height: Constants.Sizes.height)
+                .disabled(viewModel.showConfirmSurvey)
             }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            .frame(maxWidth: .infinity, alignment: .leading)
             .ignoresSafeArea()
             .frame(width: Constants.Sizes.width, height: Constants.Sizes.height)
-            .disabled(viewModel.showConfirmSurvey)
+            .refreshable {
+                viewModel.surveysData = []
+//                self.tabSelected = firstSelection
+                viewModel.fetchSurveys(page: 1)
+            }
         }
     }
 
@@ -160,12 +198,12 @@ struct HomeView: View {
                 .opacity(0.8)
                 .skeleton(show: viewModel.isLoadingData, showSkeletonAnimation: viewModel.showSkeletonAnimation)
             } else {
-                PageIndicator(selectedPage: $viewModel.tabSelected, pageCount: 3)
+                PageIndicator(selectedPage: $viewModel.tabSelected, surveysData: $viewModel.surveysData, pageCount: viewModel.surveysData.count)
             }
             
             HStack (alignment: .bottom, spacing: 20) {
                 VStack (alignment: .leading, spacing: 20) {
-                    Text(viewModel.tabSelected.title)
+                    Text(viewModel.tabSelected.attributes.title ?? "")
                         .lineLimit(2)
                         .skeleton(show: viewModel.isLoadingData, showSkeletonAnimation: viewModel.showSkeletonAnimation)
                         .font(.neuzeitBold(28))
@@ -173,7 +211,7 @@ struct HomeView: View {
                         .frame(height: 70)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Text(viewModel.tabSelected.body)
+                    Text(viewModel.tabSelected.attributes.description ?? "")
                         .skeleton(show: viewModel.isLoadingData, showSkeletonAnimation: viewModel.showSkeletonAnimation)
                         .font(.neuzeitBook(17))
                         .foregroundStyle(Color.bodyTextColor)
@@ -229,11 +267,11 @@ struct HomeView: View {
                     .fontWeight(.semibold)
             }
             
-            Text(viewModel.tabSelected.title)
+            Text(viewModel.tabSelected.attributes.title ?? "")
                 .font(.neuzeitBold(34))
                 .foregroundStyle(.white)
             
-            Text(viewModel.tabSelected.body)
+            Text(viewModel.tabSelected.attributes.description ?? "")
                 .font(.neuzeitBook(17))
                 .foregroundStyle(Color.bodyTextColor)
                 .frame(maxHeight: .infinity, alignment: .top)

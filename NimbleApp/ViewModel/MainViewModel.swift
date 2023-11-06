@@ -17,11 +17,33 @@ final class MainViewModel: ObservableObject {
     @Published var showPasswordRecoveryView = false
     
     
-    @Published var emailText: String = ""
-    @KeyChain(key:  "user_email", account: Constants.keyAccountName) var storedEmail //: String = ""
+    @Published var emailText: String = "" {
+        didSet {
+            checkEmailText()
+        }
+    }
     
-    @Published var passwordText: String = ""
-    @KeyChain(key:  "user_password", account: Constants.keyAccountName)  var storedPassword //: String = ""
+    @KeyChain(key:  "user_email", account: Constants.keyAccountName) var storedEmail
+    @Published var emailIsValid: Bool = true
+    @Published var emailErrorLabel: String = "This field can not be empty"
+    
+    
+    @Published var passwordText: String = "" {
+        didSet {
+            checkPasswordText()
+        }
+    }
+    @KeyChain(key:  "user_password", account: Constants.keyAccountName)  var storedPassword
+    @Published var passwordIsValid: Bool = true
+    @Published var passwordErrorLabel: String? = "This field can not be empty"
+    
+    var loginButtonIsDisabled: Bool {
+        if showPasswordRecoveryView {
+            return (emailText.isEmpty || !emailIsValid)
+        } else {
+            return (emailText.isEmpty || !emailIsValid) || passwordText.isEmpty
+        }
+    }
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -30,7 +52,6 @@ final class MainViewModel: ObservableObject {
     
     //MARK: init
     init() {
-//        print("self.storedEmail: \(String(data: self.storedEmail ?? Data(), encoding: .utf8)) - self.storedPassword: \(String(data: self.storedPassword ?? Data(), encoding: .utf8))")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             withAnimation {
                 self.showLogo = true
@@ -46,6 +67,39 @@ final class MainViewModel: ObservableObject {
     
     
     //MARK: Functions
+    
+    private func checkEmailText() {
+        DispatchQueue.main.async {
+            withAnimation {
+                if !self.emailText.isEmpty {
+                    self.emailIsValid = self.emailText.isValidEmail
+                    self.emailErrorLabel = "Invalid email"
+                } else {
+                    self.emailIsValid = false
+                    self.emailErrorLabel = "This field can not be empty"
+                }
+            }
+        }
+    }
+    
+    private func checkPasswordText() {
+       
+        DispatchQueue.main.async {
+            withAnimation {
+                if !self.passwordText.isEmpty {
+                    self.passwordIsValid = true
+                } else {
+                    self.passwordIsValid = false
+                    self.passwordErrorLabel = "This field can not be empty"
+                }
+            }
+        }
+    }
+    
+    func checkTextFields() {
+        checkEmailText()
+        checkPasswordText()
+    }
     
     func login(onSuccess: @escaping () -> Void) {
         storeData()

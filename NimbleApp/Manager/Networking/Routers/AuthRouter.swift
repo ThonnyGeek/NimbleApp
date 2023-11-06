@@ -15,7 +15,7 @@ case login(parameters: Parameters)
     var path: String {
         switch self {
         case .login:
-            return "/api/v1/oauth/token"
+            return "/oauth/token"
         }
     }
     var method: HTTPMethod {
@@ -26,7 +26,7 @@ case login(parameters: Parameters)
     }
     
     func asURLRequest() throws -> URLRequest {
-        let url = try Constants.URLs.Production.asURL()
+        let url = try Constants.URLs.production.asURL()
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         urlRequest.httpMethod = method.rawValue
@@ -41,7 +41,7 @@ case login(parameters: Parameters)
                 params_with_keys.updateValue(cSecretString, forKey: "client_secret")
             }
             
-            print("parametros: ",params_with_keys)
+            print("parametros: \(params_with_keys)")
             
             urlRequest = try URLEncoding.default.encode(urlRequest, with: params_with_keys)
         }

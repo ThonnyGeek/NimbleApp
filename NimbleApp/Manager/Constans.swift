@@ -10,8 +10,8 @@ import Combine
 
 struct Constants {
     struct URLs {
-        static let Production     = "https://survey-api.nimblehq.co"
-        static let Staging        = "https://nimble-survey-web-staging.herokuapp.com"
+        static let production     = "https://survey-api.nimblehq.co/api/v1"
+        static let staging        = "https://nimble-survey-web-staging.herokuapp.com/api/v1"
     }
     
     struct Sizes {

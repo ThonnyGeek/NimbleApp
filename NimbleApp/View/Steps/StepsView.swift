@@ -71,6 +71,7 @@ struct StepsView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .padding(.bottom, 24)
+                .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
                 .padding(.horizontal, 20)
                 
                 Text("\(page)/5")
@@ -176,5 +177,9 @@ struct StepsView: View {
             //
         }
         .ignoresSafeArea()
+        .background {
+            Color.black
+                .ignoresSafeArea()
+        }
     }
 }

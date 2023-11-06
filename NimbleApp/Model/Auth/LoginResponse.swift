@@ -9,17 +9,17 @@ import Foundation
 
 struct LoginResponse: Decodable {
     var data: LoginData?
-    var errors: [LoginError]?
+    var errors: [ResponseError]?
 }
 
 // MARK: - DataClass
 struct LoginData: Decodable {
     var id, type: String
-    var attributes: Attributes
+    var attributes: LoginDataAttributes
 }
 
 // MARK: - Attributes
-struct Attributes: Decodable {
+struct LoginDataAttributes: Decodable {
     var accessToken, tokenType: String
     var expiresIn: Int
     var refreshToken: String
@@ -35,7 +35,7 @@ struct Attributes: Decodable {
 }
 
 // MARK: - Error
-struct LoginError: Decodable {
+struct ResponseError: Decodable {
     var detail: String
     var code: String?
 }

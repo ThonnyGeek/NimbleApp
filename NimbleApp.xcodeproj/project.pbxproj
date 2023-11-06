@@ -13,6 +13,10 @@
 		85A0AEA22AF8B46700427112 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 85A0AEA12AF8B46700427112 /* Alamofire */; };
 		85A0AEA42AF8B73900427112 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A0AEA32AF8B73900427112 /* UserManager.swift */; };
 		85A0AEA72AF8B7AA00427112 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A0AEA62AF8B7AA00427112 /* LoginResponse.swift */; };
+		85A0AEA92AF8C6DF00427112 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A0AEA82AF8C6DF00427112 /* String+Extension.swift */; };
+		85A0AEAC2AF8CBE700427112 /* SurveyListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A0AEAB2AF8CBE700427112 /* SurveyListResponse.swift */; };
+		85A0AEAF2AF8CD2000427112 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A0AEAE2AF8CD2000427112 /* HomeRouter.swift */; };
+		85A0AEB12AF8CE0100427112 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A0AEB02AF8CE0100427112 /* HomeService.swift */; };
 		85ABA59B2AF6E3A30072CC19 /* CustomWheelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA59A2AF6E3A30072CC19 /* CustomWheelPickerView.swift */; };
 		85ABA59E2AF6FFFB0072CC19 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA59D2AF6FFFB0072CC19 /* StepsView.swift */; };
 		85ABA5A12AF705660072CC19 /* SecondaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ABA5A02AF705660072CC19 /* SecondaryButtonStyle.swift */; };
@@ -76,6 +80,10 @@
 		8594C7BF2AF5DFE2005A9946 /* PageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicator.swift; sourceTree = "<group>"; };
 		85A0AEA32AF8B73900427112 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		85A0AEA62AF8B7AA00427112 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		85A0AEA82AF8C6DF00427112 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		85A0AEAB2AF8CBE700427112 /* SurveyListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListResponse.swift; sourceTree = "<group>"; };
+		85A0AEAE2AF8CD2000427112 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		85A0AEB02AF8CE0100427112 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		85ABA59A2AF6E3A30072CC19 /* CustomWheelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWheelPickerView.swift; sourceTree = "<group>"; };
 		85ABA59D2AF6FFFB0072CC19 /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
 		85ABA5A02AF705660072CC19 /* SecondaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButtonStyle.swift; sourceTree = "<group>"; };
@@ -152,6 +160,22 @@
 				85A0AEA62AF8B7AA00427112 /* LoginResponse.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		85A0AEAA2AF8CBDF00427112 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				85A0AEAB2AF8CBE700427112 /* SurveyListResponse.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		85A0AEAD2AF8CCDE00427112 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				85CC90E62AF4AB30008410E4 /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		85ABA59C2AF6FFBC0072CC19 /* Steps */ = {
@@ -234,11 +258,11 @@
 		85CC90BB2AF44102008410E4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				85A0AEAD2AF8CCDE00427112 /* Home */,
 				85ABA59C2AF6FFBC0072CC19 /* Steps */,
 				85CC90BE2AF4434A008410E4 /* MainView.swift */,
 				85CC90DE2AF48997008410E4 /* Coordinators */,
 				85CC90C82AF44C13008410E4 /* Utils */,
-				85CC90E62AF4AB30008410E4 /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -246,6 +270,7 @@
 		85CC90BC2AF441C9008410E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				85A0AEAA2AF8CBDF00427112 /* Home */,
 				85A0AEA52AF8B7AA00427112 /* Auth */,
 			);
 			path = Model;
@@ -277,6 +302,7 @@
 				85CC90C42AF44759008410E4 /* Color+Extension.swift */,
 				85CC90CD2AF45388008410E4 /* Font+Extension.swift */,
 				8594C7BD2AF5DFB2005A9946 /* View+Extension.swift */,
+				85A0AEA82AF8C6DF00427112 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -355,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				85FC17E52AF86E0C00128A0D /* AuthService.swift */,
+				85A0AEB02AF8CE0100427112 /* HomeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -363,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				85FC17E92AF86EE200128A0D /* AuthRouter.swift */,
+				85A0AEAE2AF8CD2000427112 /* HomeRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -513,6 +541,7 @@
 				8594C7C02AF5DFE2005A9946 /* PageIndicator.swift in Sources */,
 				85ABA5A52AF7479D0072CC19 /* RatingView.swift in Sources */,
 				85B5BAA62AF5760500906B5C /* SideMenuView.swift in Sources */,
+				85A0AEAC2AF8CBE700427112 /* SurveyListResponse.swift in Sources */,
 				85ABA5AD2AF758000072CC19 /* FourthStepView.swift in Sources */,
 				85CC90C52AF44759008410E4 /* Color+Extension.swift in Sources */,
 				85ABA59E2AF6FFFB0072CC19 /* StepsView.swift in Sources */,
@@ -526,14 +555,17 @@
 				85CC90E52AF49844008410E4 /* CustomNotificationView.swift in Sources */,
 				85CC908F2AF43FBB008410E4 /* ContentView.swift in Sources */,
 				85FC17E32AF83EC300128A0D /* KeyChainPropertyWrapper.swift in Sources */,
+				85A0AEB12AF8CE0100427112 /* HomeService.swift in Sources */,
 				85FC17EA2AF86EE200128A0D /* AuthRouter.swift in Sources */,
 				85ABA5A72AF74D260072CC19 /* QuestionNPSView.swift in Sources */,
+				85A0AEAF2AF8CD2000427112 /* HomeRouter.swift in Sources */,
 				85CC90C22AF44435008410E4 /* Constans.swift in Sources */,
 				85CC90992AF43FBC008410E4 /* NimbleApp.xcdatamodeld in Sources */,
 				85CC90BF2AF4434A008410E4 /* MainView.swift in Sources */,
 				85ABA5A92AF756BD0072CC19 /* FirstStepView.swift in Sources */,
 				85CC90CA2AF44C31008410E4 /* MainTextField.swift in Sources */,
 				85CC908D2AF43FBB008410E4 /* NimbleAppApp.swift in Sources */,
+				85A0AEA92AF8C6DF00427112 /* String+Extension.swift in Sources */,
 				85CC90E32AF49829008410E4 /* InAppNotification.swift in Sources */,
 				85CC90CE2AF45388008410E4 /* Font+Extension.swift in Sources */,
 				85ABA5A32AF72A480072CC19 /* TestView.swift in Sources */,

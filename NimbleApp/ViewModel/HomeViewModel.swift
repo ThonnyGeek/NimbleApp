@@ -7,61 +7,7 @@
 
 import Foundation
 import SwiftUI
-
-enum HomeTab: Hashable {
-    case workingFromHome
-    case careerTraining
-    case inclusionBelongig
-    
-    var id: Int {
-        switch self {
-        case .workingFromHome:
-            1
-        case .careerTraining:
-            2
-        case .inclusionBelongig:
-            3
-        }
-    }
-    
-    var title: String {
-        switch self {
-        case .workingFromHome:
-            "Working from home Check-In"
-        case .careerTraining:
-            "Career training and development"
-        case .inclusionBelongig:
-            "Inclusion and belonging"
-        }
-    }
-    
-    var body: String {
-        switch self {
-        case .workingFromHome:
-            "We would like to know how you feel about our work from home (WFH) experience."
-        case .careerTraining:
-            "We would like to know what are your goals and skills you wanted to learn."
-        case .inclusionBelongig:
-            "Building a workplace culture that prioritizes belonging and inclusio..."
-        }
-    }
-    
-    var backgroundImgName: String {
-        switch self {
-        case .workingFromHome:
-            "firstHomeBackground"
-        case .careerTraining:
-            "secondHomeBackground"
-        case .inclusionBelongig:
-            "thirdHomeBackground"
-        }
-    }
-}
-
-//struct HomeFirstStep: Hashable {
-//    let id: Int
-//    let option: String
-//}
+import Combine
 
 enum HomeFirstStep: Hashable, CaseIterable {
     case veryFulfilled
@@ -91,7 +37,7 @@ final class HomeViewModel: ObservableObject {
     
     var presentDate = Date()
     
-    @Published var tabSelected: HomeTab = .workingFromHome
+    @Published var tabSelected: SurveyListData = .init(id: "", type: "", attributes: SurveyListDataAttributes(title: "", description: "", coverImageURL: ""))
     
     @Published var showSkeletonAnimation: Bool = false
     
@@ -99,25 +45,41 @@ final class HomeViewModel: ObservableObject {
     
     @Published var showMainInfo: Bool = true
     
-    @Published var surveySelected: HomeTab?
+    @Published var surveySelected: SurveyListData?
     
     @Published var surveyStep: Int?
     @Published var showConfirmSurvey: Bool = false
-//    @Published var fisrtStepOptionSelected: HomeFirstStep?// = .veryFulfilled
-    @Published var fisrtStepOptionSelected: String? = HomeFirstStep.veryFulfilled.text// = .veryFulfilled
+    
+    @Published var fisrtStepOptionSelected: String? = HomeFirstStep.veryFulfilled.text
     @Published var showFirstStep: Bool = false
+    
+    @Published var surveysData: [SurveyListData] = []
+    @Published var surveysResponseMeta: Meta?
+    
+    private var subscriptions = Set<AnyCancellable>()
     
     //MARK: Constants
     let dateFormatter = DateFormatter()
     
-    let homeTabs: [HomeTab] = [.workingFromHome, .careerTraining, .inclusionBelongig]
+//    let homeTabs: [HomeTab] = [.workingFromHome, .careerTraining, .inclusionBelongig]
     
     let fisrtStepOptions: [HomeFirstStep] = [.veryFulfilled, .somewhatFulfilled, .somewhatUnfulfilled, .veryUnfulfilled]
+    
+    let homeService: HomeService = HomeService()
     
     //MARK: init
     init() {
         print("init() {")
+        fetchSurveys(page: 1) { tokenWasRefreshed in
+            if tokenWasRefreshed {
+                self.fetchSurveys(page: 1)
+            }
+        }
+        
+        
         dateFormatter.dateFormat = "EEEE, MMMM d"
+        
+//        tabSelected = surveysData.first ?? .init(id: "1", type: "12", attributes: SurveyListDataAttributes(title: "aa", description: "bb", coverImageURL: ""))
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             print("dqm")
@@ -126,4 +88,51 @@ final class HomeViewModel: ObservableObject {
     }
     
     //MARK: Functions
+    func fetchSurveys(page: Int, onSuccess: ((_ tokenWasRefreshed: Bool) -> Void)? = nil) {
+        
+        if page == 1 {
+            self.surveysData = []
+        }
+        
+         self.homeService.getSurveys(page: page, perPage: 5)
+             .sink(receiveCompletion: Constants.onReceive) { result in
+                 print("result: \(result)")
+                 
+                 self.surveysResponseMeta = result.meta
+                 
+                 guard let data = result.data, let firstSelection = data.first else {
+                     if result.errors?.first?.code == "invalid_token", let onSuccess = onSuccess {
+                         self.refreshToken() {
+                             onSuccess(true)
+                         }
+                     } else {
+                         InAppNotificationManager.shared.showError(result.errors?.first?.code ?? "API connection error", subtitle: result.errors?.first?.detail)
+                     }
+                     return
+                 }
+                
+                 if page == 1 {
+                     self.surveysData = data
+                     self.tabSelected = firstSelection
+                 } else {
+                     self.surveysData.append(contentsOf: data)
+                 }
+             }
+             .store(in: &subscriptions)
+    }
+    
+    func refreshToken(onSuccess: @escaping () -> Void) {
+        self.homeService.refreshToken()
+            .sink(receiveCompletion: Constants.onReceive) { result in
+                guard let data = result.data else {
+                    InAppNotificationManager.shared.showError(result.errors?.first?.code ?? "API connection error", subtitle: result.errors?.first?.detail)
+                    
+                    return
+                }
+                
+                UserManager.shared.authorize(access_token: data.attributes.accessToken, expires_in: data.attributes.expiresIn.description, refresh_token: data.attributes.refreshToken)
+                onSuccess()
+            }
+            .store(in: &subscriptions)
+    }
 }

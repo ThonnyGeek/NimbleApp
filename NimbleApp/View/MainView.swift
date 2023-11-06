@@ -9,8 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-//    @StateObject var viewModel = MainViewModel()
-    @StateObject var viewModel: MainViewModel //= MainViewModel()
+    @StateObject var viewModel: MainViewModel
     
     @StateObject var state = WelcomeFlowState()
     
@@ -58,8 +57,14 @@ struct MainView: View {
                 }
                 .frame(maxWidth: Constants.Sizes.width * 0.9, maxHeight: Constants.Sizes.height - 100, alignment: .topLeading)
             }
-        }.onDisappear {
-            print("DISAPPEARS")
+        }
+        .onAppear {
+            if UserManager.shared.isUserAuthorized {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    print("UserManager.shared.accessToken: \(String(describing: UserManager.shared.accessToken))")
+                    openHome()
+                }
+            }
         }
     }
     
@@ -85,10 +90,10 @@ struct MainView: View {
     
     private func viewContent() -> some View {
         VStack (spacing: 20) {
-            MainTextField(title: "Email", text: $viewModel.emailText, font: .neuzeitBook(17))
+            MainTextField(title: "Email", text: $viewModel.emailText, font: .neuzeitBook(17), withError: !viewModel.emailIsValid, errorText: viewModel.emailErrorLabel)
             
             if !viewModel.showPasswordRecoveryView {
-                MainTextField(title: "Password", text: $viewModel.passwordText, font: .neuzeitBook(17), isSecured: true)
+                MainTextField(title: "Password", text: $viewModel.passwordText, font: .neuzeitBook(17), isSecured: true, withError: !viewModel.passwordIsValid, errorText: viewModel.passwordErrorLabel)
                     .overlay {
                         Button {
                             withAnimation {
@@ -99,19 +104,19 @@ struct MainView: View {
                                 .font(.neuzeitBook(17))
                                 .foregroundColor(.white.opacity(0.3))
                         }
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .padding(.trailing, 20)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity ,alignment: .topTrailing)
+                        .padding(.init(top: 20, leading: 0, bottom: 0, trailing: 20))
                     }
             }
             
             Button {
                 if viewModel.showPasswordRecoveryView {
                     //Password Recovery
-                    state.coverPath.append(WelcomeLink.home)
+                    openHome()
                 } else {
                     //Log In
                     viewModel.login {
-                        state.coverPath.append(WelcomeLink.home)
+                        openHome()
                     }
                 }
             } label: {
@@ -120,12 +125,27 @@ struct MainView: View {
                     .foregroundStyle(.black)
             }
             .buttonStyle(PrimaryButtonStyle(backgroundColor: .white, cornerRadius: 10, verticalPadding: 17))
+            .disabled(viewModel.loginButtonIsDisabled)
+            .opacity(viewModel.loginButtonIsDisabled ? 0.5 : 1)
+            .onTapGesture {
+                if viewModel.loginButtonIsDisabled {
+                    viewModel.checkTextFields()
+                }
+            }
         }
         .frame(width: Constants.Sizes.width * 0.9)
+    }
+    
+    private func openHome() {
+        state.coverPath.append(WelcomeLink.home)
     }
 }
 
 #Preview {
+    
     MainView(viewModel: MainViewModel())
+        .onAppear {
+            UserManager.shared.authorize(access_token: "NuyBuY3BP4wYrc9AS5mHJP7DDvZLTn-zUG68FGydOXI", expires_in: "", refresh_token: "")
+        }
 }
 
