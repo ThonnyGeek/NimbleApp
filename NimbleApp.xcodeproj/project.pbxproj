@@ -38,7 +38,6 @@
 		85CC90942AF43FBC008410E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85CC90932AF43FBC008410E4 /* Preview Assets.xcassets */; };
 		85CC90962AF43FBC008410E4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90952AF43FBC008410E4 /* Persistence.swift */; };
 		85CC90992AF43FBC008410E4 /* NimbleApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90972AF43FBC008410E4 /* NimbleApp.xcdatamodeld */; };
-		85CC90A32AF43FBC008410E4 /* NimbleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90A22AF43FBC008410E4 /* NimbleAppTests.swift */; };
 		85CC90BF2AF4434A008410E4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90BE2AF4434A008410E4 /* MainView.swift */; };
 		85CC90C22AF44435008410E4 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90C12AF44435008410E4 /* Constans.swift */; };
 		85CC90C52AF44759008410E4 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90C42AF44759008410E4 /* Color+Extension.swift */; };
@@ -102,7 +101,6 @@
 		85CC90952AF43FBC008410E4 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		85CC90982AF43FBC008410E4 /* NimbleApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NimbleApp.xcdatamodel; sourceTree = "<group>"; };
 		85CC909E2AF43FBC008410E4 /* NimbleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NimbleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		85CC90A22AF43FBC008410E4 /* NimbleAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NimbleAppTests.swift; sourceTree = "<group>"; };
 		85CC90BE2AF4434A008410E4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		85CC90C12AF44435008410E4 /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		85CC90C42AF44759008410E4 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 		85CC90A12AF43FBC008410E4 /* NimbleAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				85CC90A22AF43FBC008410E4 /* NimbleAppTests.swift */,
 				8565B6D82AF9ECB700EA8486 /* AuthProcessTests.swift */,
 				8565B6DA2AFA23ED00EA8486 /* HomeViewModelTests.swift */,
 			);
@@ -534,7 +531,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85CC90A32AF43FBC008410E4 /* NimbleAppTests.swift in Sources */,
 				8565B6D92AF9ECB700EA8486 /* AuthProcessTests.swift in Sources */,
 				8565B6DB2AFA23ED00EA8486 /* HomeViewModelTests.swift in Sources */,
 			);
