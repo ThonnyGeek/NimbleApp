@@ -64,7 +64,7 @@ final class MainViewModel: ObservableObject {
             withAnimation {
                 self.showLogin = true
             }
-        }
+        } 
     }
     
     
@@ -116,6 +116,8 @@ final class MainViewModel: ObservableObject {
     }
     
     func login(onSuccess: @escaping () -> Void) {
+        InAppNotificationManager.shared.showLoading()
+        
         storeData()
         
         let params: Parameters = [
@@ -127,8 +129,10 @@ final class MainViewModel: ObservableObject {
         self.authService.login(params: params)
             .sink(receiveCompletion: Constants.onReceive) { result in
                 
+                InAppNotificationManager.shared.hideLoading()
+                
                 guard let data = result.data else {
-                    InAppNotificationManager.shared.showError("Login: \(result.errors?.first?.code)" ?? "API connection error", subtitle: result.errors?.first?.detail)
+                    InAppNotificationManager.shared.showNotification("Login: \(result.errors?.first?.code ?? "API connection error")", subtitle: result.errors?.first?.detail)
                     return
                 }
                 
@@ -142,7 +146,7 @@ final class MainViewModel: ObservableObject {
     }
     
     private func storeData() {
-        print("self.storedEmail: \(self.storedEmail) - self.storedPassword: \(self.storedPassword)")
+        print("self.storedEmail: \(String(describing: self.storedEmail)) - self.storedPassword: \(String(describing: self.storedPassword))")
         
         self.storedEmail = self.emailText.data(using: .utf8)
         self.storedPassword = self.passwordText.data(using: .utf8)

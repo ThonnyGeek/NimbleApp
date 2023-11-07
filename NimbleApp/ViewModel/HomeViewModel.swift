@@ -43,6 +43,8 @@ final class HomeViewModel: ObservableObject {
     
     @Published var isLoadingData: Bool = true
     
+    @Published var userProfileData: UserProfileAttributes?
+    
     @Published var showMainInfo: Bool = true
     
     @Published var surveySelected: SurveyListData?
@@ -87,6 +89,8 @@ final class HomeViewModel: ObservableObject {
     
     //MARK: Functions
     func fetchSurveys(page: Int, onSuccess: ((_ tokenWasRefreshed: Bool) -> Void)? = nil) {
+        InAppNotificationManager.shared.showLoading()
+                
         
         if page == 1 {
             self.surveysData = []
@@ -96,6 +100,7 @@ final class HomeViewModel: ObservableObject {
              .sink(receiveCompletion: Constants.onReceive) { result in
                  print("result: \(result)")
                  
+                 InAppNotificationManager.shared.hideLoading()
                  self.surveysResponseMeta = result.meta
                  
                  guard let data = result.data, let firstSelection = data.first else {
@@ -104,7 +109,7 @@ final class HomeViewModel: ObservableObject {
                              onSuccess(true)
                          }
                      } else {
-                         InAppNotificationManager.shared.showError(result.errors?.first?.code ?? "API connection error", subtitle: result.errors?.first?.detail)
+                         InAppNotificationManager.shared.showNotification(result.errors?.first?.code ?? "API connection error", subtitle: result.errors?.first?.detail)
                      }
                      return
                  }
@@ -123,13 +128,28 @@ final class HomeViewModel: ObservableObject {
         self.homeService.refreshToken()
             .sink(receiveCompletion: Constants.onReceive) { result in
                 guard let data = result.data else {
-                    InAppNotificationManager.shared.showError(result.errors?.first?.code ?? "API connection error", subtitle: result.errors?.first?.detail)
+                    InAppNotificationManager.shared.showNotification(result.errors?.first?.code ?? "API connection error", subtitle: result.errors?.first?.detail)
                     
                     return
                 }
                 
                 UserManager.shared.authorize(access_token: data.attributes.accessToken, expires_in: data.attributes.expiresIn.description, refresh_token: data.attributes.refreshToken)
                 onSuccess()
+            }
+            .store(in: &subscriptions)
+    }
+    
+    func fetchUserProfile() {
+        self.homeService.getUserProfile()
+            .sink(receiveCompletion: Constants.onReceive) { result in
+                
+                print("result: \(result)")
+                guard let data = result.data else {
+                    InAppNotificationManager.shared.showNotification(result.errors?.first?.code ?? "API connection error", subtitle: result.errors?.first?.detail)
+                    return
+                }
+                
+                self.userProfileData = data.attributes
             }
             .store(in: &subscriptions)
     }

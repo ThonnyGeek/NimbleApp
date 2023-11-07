@@ -139,7 +139,7 @@ struct MainView: View {
     
     MainView(viewModel: MainViewModel())
         .onAppear {
-            UserManager.shared.authorize(access_token: "NuyBuY3BP4wYrc9AS5mHJP7DDvZLTn-zUG68FGydOXI", expires_in: "", refresh_token: "")
+//            UserManager.shared.authorize(access_token: "NuyBuY3BP4wYrc9AS5mHJP7DDvZLTn-zUG68FGydOXI", expires_in: "", refresh_token: "")
         }
 }
 

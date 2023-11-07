@@ -39,6 +39,9 @@ struct SideMenuViewContents: View {
     
     @Binding var presentSideMenu: Bool
     
+    let userName: String
+    let userAvatar: String
+    
     let logoutAction: () -> Void
     
     var body: some View {
@@ -57,8 +60,15 @@ struct SideMenuViewContents: View {
                     Button {
                         presentSideMenu = false
                     } label: {
-                        Image("profilePic")
-                            .frame(width: 36, height: 36)
+                        AsyncImage(url: URL(string: userAvatar)) { image in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 36, height: 36)
+                        } placeholder: {
+                            Image("profilePic")
+                                .frame(width: 36, height: 36)
+                        }
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(.trailing, 20)
@@ -98,7 +108,7 @@ struct SideMenuViewContentsView: View {
     @State var isShowing: Bool = false
     
     var body: some View {
-        SideMenuViewContents(presentSideMenu: $isShowing) {
+        SideMenuViewContents(presentSideMenu: $isShowing, userName: "", userAvatar: "") {
             
         }
         .frame(width: Constants.Sizes.width * 0.65)

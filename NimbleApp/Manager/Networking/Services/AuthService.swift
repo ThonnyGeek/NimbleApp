@@ -11,6 +11,7 @@ import Alamofire
 
 protocol AuthServiceProtocol {
     func login(params: Parameters) -> AnyPublisher<LoginResponse, Never>
+    func passwordRecovery(params: Parameters) -> AnyPublisher<, Never>
 }
 
 class AuthService: AuthServiceProtocol {
@@ -26,4 +27,6 @@ class AuthService: AuthServiceProtocol {
             }
             .eraseToAnyPublisher()
     }
+    
+    func passwordRecovery(params: Parameters) -> AnyPublisher<, Never>
 }

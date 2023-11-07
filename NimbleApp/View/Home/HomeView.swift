@@ -53,6 +53,7 @@ struct HomeView: View {
         }
         .background(.gray)
         .onAppear {
+            
             viewModel.showSkeletonAnimation = true
             
             if !viewModel.isLoadingData {
@@ -101,7 +102,7 @@ struct HomeView: View {
     private func sideMenu() -> some View {
         
         SideMenuView(isShowing: $viewModel.showMenu, direction: .trailing) {
-            SideMenuViewContents(presentSideMenu: $viewModel.showMenu) {
+            SideMenuViewContents(presentSideMenu: $viewModel.showMenu, userName: "", userAvatar: "") {
                 state.removeLast(state.count)
                 UserManager.shared.logout()
             }
@@ -298,6 +299,6 @@ struct HomeView: View {
     
 }
 
-//#Preview {
-//    HomeView(viewModel: HomeViewModel(), state: .constant(NavigationPath()))
-//}
+#Preview {
+    HomeView(viewModel: HomeViewModel(), state: .constant(NavigationPath()))
+}

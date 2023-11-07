@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8525E2AA2AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8525E2A92AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf */; };
+		85880F292AF9DA3B00C8C008 /* UserProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85880F282AF9DA3B00C8C008 /* UserProfileResponse.swift */; };
 		8594C7BE2AF5DFB2005A9946 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8594C7BD2AF5DFB2005A9946 /* View+Extension.swift */; };
 		8594C7C02AF5DFE2005A9946 /* PageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8594C7BF2AF5DFE2005A9946 /* PageIndicator.swift */; };
 		85A0AEA22AF8B46700427112 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 85A0AEA12AF8B46700427112 /* Alamofire */; };
@@ -76,6 +77,7 @@
 
 /* Begin PBXFileReference section */
 		8525E2A92AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Neuzeit S LT BookHeavy.ttf"; sourceTree = "<group>"; };
+		85880F282AF9DA3B00C8C008 /* UserProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileResponse.swift; sourceTree = "<group>"; };
 		8594C7BD2AF5DFB2005A9946 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		8594C7BF2AF5DFE2005A9946 /* PageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicator.swift; sourceTree = "<group>"; };
 		85A0AEA32AF8B73900427112 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				85A0AEAB2AF8CBE700427112 /* SurveyListResponse.swift */,
+				85880F282AF9DA3B00C8C008 /* UserProfileResponse.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				85ABA5AD2AF758000072CC19 /* FourthStepView.swift in Sources */,
 				85CC90C52AF44759008410E4 /* Color+Extension.swift in Sources */,
 				85ABA59E2AF6FFFB0072CC19 /* StepsView.swift in Sources */,
+				85880F292AF9DA3B00C8C008 /* UserProfileResponse.swift in Sources */,
 				85CC90D12AF456D1008410E4 /* PrimaryButtonStyle.swift in Sources */,
 				85CC90E92AF4BACE008410E4 /* HomeViewModel.swift in Sources */,
 				85CC90E72AF4AB30008410E4 /* HomeView.swift in Sources */,

@@ -10,17 +10,19 @@ import Alamofire
 
 enum AuthRouter: URLRequestConvertible {
 case login(parameters: Parameters)
-    
+case passwordRecovery(parameters: Parameters)
     
     var path: String {
         switch self {
         case .login:
             return "/oauth/token"
+        case .passwordRecovery:
+            return "/passwords"
         }
     }
     var method: HTTPMethod {
         switch self {
-        case .login:
+        case .login, .passwordRecovery:
             return .post
         }
     }
@@ -32,7 +34,7 @@ case login(parameters: Parameters)
         urlRequest.httpMethod = method.rawValue
         
         switch self {
-        case .login(let params):
+        case .login(let params), .passwordRecovery(let params):
             
             var params_with_keys = params
             

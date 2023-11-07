@@ -46,4 +46,17 @@ class HomeService: HomeServiceProtocol {
             }
             .eraseToAnyPublisher()
     }
+    
+    func getUserProfile() -> AnyPublisher<UserProfileResponse, Never> {
+        return AF.request(HomeRouter.getUserProfile)
+            .publishDecodable(type: UserProfileResponse.self)
+            .compactMap { result in
+                guard let result = result.value else {
+                    //                    fatalError("ERROR FATAL: \(result.error)")
+                    return nil
+                }
+                return result
+            }
+            .eraseToAnyPublisher()
+    }
 }

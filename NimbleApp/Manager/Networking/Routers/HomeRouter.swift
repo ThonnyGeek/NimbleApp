@@ -11,6 +11,7 @@ import Alamofire
 enum HomeRouter: URLRequestConvertible {
     case getSurveys(parameters: Parameters)
     case refreshToken
+    case getUserProfile
     
     var path: String {
         switch self {
@@ -18,11 +19,13 @@ enum HomeRouter: URLRequestConvertible {
             return "/surveys"
         case .refreshToken:
             return "/oauth/token"
+        case .getUserProfile:
+            return "/me"
         }
     }
     var method: HTTPMethod {
         switch self {
-        case .getSurveys:
+        case .getSurveys, .getUserProfile:
             return .get
         case .refreshToken:
             return .post
@@ -44,6 +47,8 @@ enum HomeRouter: URLRequestConvertible {
             print("urlRequest : \(urlRequest)")
             
             urlRequest = try URLEncoding.default.encode(urlRequest, with: params)
+        case .getUserProfile:
+            return urlRequest
         case .refreshToken:
             
             var params: Parameters = [:]
