@@ -12,8 +12,10 @@ import Alamofire
 final class MainViewModel: ObservableObject {
     
     //MARK: Variables
-    @Published final var showLogo = false
-    @Published final var showLogin = false
+    @Published var welcomeFlowState: WelcomeFlowState
+    
+    @Published var showLogo = false
+    @Published var showLogin = false
     @Published var showPasswordRecoveryView = false
     
     
@@ -33,7 +35,7 @@ final class MainViewModel: ObservableObject {
             checkPasswordText()
         }
     }
-    @KeyChain(key:  "user_password", account: Constants.keyAccountName)  var storedPassword
+    @KeyChain(key:  "user_password", account: Constants.keyAccountName) var storedPassword
     @Published var passwordIsValid: Bool = true
     @Published var passwordErrorLabel: String? = "This field can not be empty"
     
@@ -48,10 +50,13 @@ final class MainViewModel: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     
     //MARK: Constants
-    let authService: AuthService = AuthService()
+    let authService: AuthServiceProtocol// = AuthService()
     
     //MARK: init
-    init() {
+    init(welcomeFlowState: WelcomeFlowState, authService: AuthServiceProtocol) {
+        self.welcomeFlowState = welcomeFlowState
+        self.authService = authService
+        
         print("MainViewModel init() ")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -70,7 +75,7 @@ final class MainViewModel: ObservableObject {
     
     //MARK: Functions
     
-    private func checkEmailText() {
+    func checkEmailText() {
         DispatchQueue.main.async {
             withAnimation {
                 if !self.emailText.isEmpty {
@@ -84,7 +89,7 @@ final class MainViewModel: ObservableObject {
         }
     }
     
-    private func checkPasswordText() {
+    func checkPasswordText() {
        
         DispatchQueue.main.async {
             withAnimation {
@@ -98,27 +103,29 @@ final class MainViewModel: ObservableObject {
         }
     }
     
-    func checkTextFields() {
+    final func checkTextFields() {
         checkEmailText()
         checkPasswordText()
     }
     
-    func mainButtonAction(onSuccess: @escaping () -> Void) {
-        if self.showPasswordRecoveryView {
+    final func mainButtonAction() {
+        if showPasswordRecoveryView {
             //Password Recovery
-            onSuccess()
+            passwordRecovery()
         } else {
             //Log In
-            self.login {
-                onSuccess()
+            login {
+                self.openHome()
             }
         }
     }
     
-    func login(onSuccess: @escaping () -> Void) {
+    func openHome() {
+        welcomeFlowState.coverPath.append(WelcomeLink.home)
+    }
+    
+    final func login(onSuccess: (() -> Void)? = nil) {
         InAppNotificationManager.shared.showLoading()
-        
-        storeData()
         
         let params: Parameters = [
             "grant_type": "password",
@@ -136,19 +143,39 @@ final class MainViewModel: ObservableObject {
                     return
                 }
                 
+                self.storeData()
+                
                 UserManager.shared.authorize(access_token: data.attributes.accessToken, expires_in: data.attributes.expiresIn.description, refresh_token: data.attributes.refreshToken)
                 
                 print("result: \(result)")
                 
-                onSuccess()
+                if let onSuccess = onSuccess {                
+                    onSuccess()
+                }
             }
             .store(in: &subscriptions)
     }
     
-    private func storeData() {
+    final func storeData() {
         print("self.storedEmail: \(String(describing: self.storedEmail)) - self.storedPassword: \(String(describing: self.storedPassword))")
         
         self.storedEmail = self.emailText.data(using: .utf8)
         self.storedPassword = self.passwordText.data(using: .utf8)
+    }
+    
+    final func passwordRecovery() {
+        self.authService.passwordRecovery(email: self.emailText)
+            .sink(receiveCompletion: Constants.onReceive) { result in
+                print("result: \(result)")
+                
+                guard let data = result.meta else {
+                    InAppNotificationManager.shared.showNotification(result.errors?.first?.code ?? "API connection error", subtitle: result.errors?.first?.detail)
+                    return
+                }
+                
+                InAppNotificationManager.shared.showNotification(data.message)
+                
+            }
+            .store(in: &subscriptions)
     }
 }

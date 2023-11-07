@@ -28,11 +28,13 @@ struct CustomNotificationView: View {
                 
                 VStack (alignment: .leading, spacing: 0) {
                     Text(text/*"Check your email."*/)
+                        .lineLimit(2)
                         .font(.neuzeitSemiBold(15))
                         .foregroundColor(.white)
                     
                     if let subtitle = subtitle {
                         Text(subtitle/*"We’ve email you instructions to reset your password."*/)
+                            .lineLimit(1)
                             .font(.neuzeitBook(13))
                             .foregroundColor(.white)
                     }

@@ -65,10 +65,11 @@ final class HomeViewModel: ObservableObject {
     
     let fisrtStepOptions: [HomeFirstStep] = [.veryFulfilled, .somewhatFulfilled, .somewhatUnfulfilled, .veryUnfulfilled]
     
-    let homeService: HomeService = HomeService()
+    let homeService: HomeServiceProtocol
     
     //MARK: init
-    init() {
+    init(homeService: HomeServiceProtocol) {
+        self.homeService = homeService
         print("HomeViewModel init() ")
         if UserManager.shared.isUserAuthorized {
             fetchSurveys(page: 1) { tokenWasRefreshed in

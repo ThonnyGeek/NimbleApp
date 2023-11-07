@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8525E2AA2AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8525E2A92AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf */; };
+		8565B6D72AF9E4F900EA8486 /* PasswordRecoveryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565B6D62AF9E4F900EA8486 /* PasswordRecoveryResponse.swift */; };
+		8565B6D92AF9ECB700EA8486 /* AuthProcessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565B6D82AF9ECB700EA8486 /* AuthProcessTests.swift */; };
+		8565B6DB2AFA23ED00EA8486 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565B6DA2AFA23ED00EA8486 /* HomeViewModelTests.swift */; };
 		85880F292AF9DA3B00C8C008 /* UserProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85880F282AF9DA3B00C8C008 /* UserProfileResponse.swift */; };
 		8594C7BE2AF5DFB2005A9946 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8594C7BD2AF5DFB2005A9946 /* View+Extension.swift */; };
 		8594C7C02AF5DFE2005A9946 /* PageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8594C7BF2AF5DFE2005A9946 /* PageIndicator.swift */; };
@@ -36,8 +39,6 @@
 		85CC90962AF43FBC008410E4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90952AF43FBC008410E4 /* Persistence.swift */; };
 		85CC90992AF43FBC008410E4 /* NimbleApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90972AF43FBC008410E4 /* NimbleApp.xcdatamodeld */; };
 		85CC90A32AF43FBC008410E4 /* NimbleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90A22AF43FBC008410E4 /* NimbleAppTests.swift */; };
-		85CC90AD2AF43FBC008410E4 /* NimbleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90AC2AF43FBC008410E4 /* NimbleAppUITests.swift */; };
-		85CC90AF2AF43FBC008410E4 /* NimbleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90AE2AF43FBC008410E4 /* NimbleAppUITestsLaunchTests.swift */; };
 		85CC90BF2AF4434A008410E4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90BE2AF4434A008410E4 /* MainView.swift */; };
 		85CC90C22AF44435008410E4 /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90C12AF44435008410E4 /* Constans.swift */; };
 		85CC90C52AF44759008410E4 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC90C42AF44759008410E4 /* Color+Extension.swift */; };
@@ -66,17 +67,13 @@
 			remoteGlobalIDString = 85CC90882AF43FBB008410E4;
 			remoteInfo = NimbleApp;
 		};
-		85CC90A92AF43FBC008410E4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 85CC90812AF43FBB008410E4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 85CC90882AF43FBB008410E4;
-			remoteInfo = NimbleApp;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8525E2A92AF5C6FB00DDC6F9 /* Neuzeit S LT BookHeavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Neuzeit S LT BookHeavy.ttf"; sourceTree = "<group>"; };
+		8565B6D62AF9E4F900EA8486 /* PasswordRecoveryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryResponse.swift; sourceTree = "<group>"; };
+		8565B6D82AF9ECB700EA8486 /* AuthProcessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProcessTests.swift; sourceTree = "<group>"; };
+		8565B6DA2AFA23ED00EA8486 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		85880F282AF9DA3B00C8C008 /* UserProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileResponse.swift; sourceTree = "<group>"; };
 		8594C7BD2AF5DFB2005A9946 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		8594C7BF2AF5DFE2005A9946 /* PageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicator.swift; sourceTree = "<group>"; };
@@ -106,9 +103,6 @@
 		85CC90982AF43FBC008410E4 /* NimbleApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NimbleApp.xcdatamodel; sourceTree = "<group>"; };
 		85CC909E2AF43FBC008410E4 /* NimbleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NimbleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		85CC90A22AF43FBC008410E4 /* NimbleAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NimbleAppTests.swift; sourceTree = "<group>"; };
-		85CC90A82AF43FBC008410E4 /* NimbleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NimbleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		85CC90AC2AF43FBC008410E4 /* NimbleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NimbleAppUITests.swift; sourceTree = "<group>"; };
-		85CC90AE2AF43FBC008410E4 /* NimbleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NimbleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		85CC90BE2AF4434A008410E4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		85CC90C12AF44435008410E4 /* Constans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
 		85CC90C42AF44759008410E4 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
@@ -146,13 +140,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		85CC90A52AF43FBC008410E4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -160,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				85A0AEA62AF8B7AA00427112 /* LoginResponse.swift */,
+				8565B6D62AF9E4F900EA8486 /* PasswordRecoveryResponse.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -198,7 +186,6 @@
 			children = (
 				85CC908B2AF43FBB008410E4 /* NimbleApp */,
 				85CC90A12AF43FBC008410E4 /* NimbleAppTests */,
-				85CC90AB2AF43FBC008410E4 /* NimbleAppUITests */,
 				85CC908A2AF43FBB008410E4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -208,7 +195,6 @@
 			children = (
 				85CC90892AF43FBB008410E4 /* NimbleApp.app */,
 				85CC909E2AF43FBC008410E4 /* NimbleAppTests.xctest */,
-				85CC90A82AF43FBC008410E4 /* NimbleAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,17 +231,10 @@
 			isa = PBXGroup;
 			children = (
 				85CC90A22AF43FBC008410E4 /* NimbleAppTests.swift */,
+				8565B6D82AF9ECB700EA8486 /* AuthProcessTests.swift */,
+				8565B6DA2AFA23ED00EA8486 /* HomeViewModelTests.swift */,
 			);
 			path = NimbleAppTests;
-			sourceTree = "<group>";
-		};
-		85CC90AB2AF43FBC008410E4 /* NimbleAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				85CC90AC2AF43FBC008410E4 /* NimbleAppUITests.swift */,
-				85CC90AE2AF43FBC008410E4 /* NimbleAppUITestsLaunchTests.swift */,
-			);
-			path = NimbleAppUITests;
 			sourceTree = "<group>";
 		};
 		85CC90BB2AF44102008410E4 /* View */ = {
@@ -439,24 +418,6 @@
 			productReference = 85CC909E2AF43FBC008410E4 /* NimbleAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		85CC90A72AF43FBC008410E4 /* NimbleAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 85CC90B82AF43FBC008410E4 /* Build configuration list for PBXNativeTarget "NimbleAppUITests" */;
-			buildPhases = (
-				85CC90A42AF43FBC008410E4 /* Sources */,
-				85CC90A52AF43FBC008410E4 /* Frameworks */,
-				85CC90A62AF43FBC008410E4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				85CC90AA2AF43FBC008410E4 /* PBXTargetDependency */,
-			);
-			name = NimbleAppUITests;
-			productName = NimbleAppUITests;
-			productReference = 85CC90A82AF43FBC008410E4 /* NimbleAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -471,10 +432,6 @@
 						CreatedOnToolsVersion = 15.0.1;
 					};
 					85CC909D2AF43FBC008410E4 = {
-						CreatedOnToolsVersion = 15.0.1;
-						TestTargetID = 85CC90882AF43FBB008410E4;
-					};
-					85CC90A72AF43FBC008410E4 = {
 						CreatedOnToolsVersion = 15.0.1;
 						TestTargetID = 85CC90882AF43FBB008410E4;
 					};
@@ -498,7 +455,6 @@
 			targets = (
 				85CC90882AF43FBB008410E4 /* NimbleApp */,
 				85CC909D2AF43FBC008410E4 /* NimbleAppTests */,
-				85CC90A72AF43FBC008410E4 /* NimbleAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -517,13 +473,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		85CC909C2AF43FBC008410E4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		85CC90A62AF43FBC008410E4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -552,6 +501,7 @@
 				85CC90D12AF456D1008410E4 /* PrimaryButtonStyle.swift in Sources */,
 				85CC90E92AF4BACE008410E4 /* HomeViewModel.swift in Sources */,
 				85CC90E72AF4AB30008410E4 /* HomeView.swift in Sources */,
+				8565B6D72AF9E4F900EA8486 /* PasswordRecoveryResponse.swift in Sources */,
 				85CC90E02AF489AA008410E4 /* WelcomeCoordinator.swift in Sources */,
 				85ABA5AF2AF758AB0072CC19 /* FifthStepView.swift in Sources */,
 				85FC17E62AF86E0C00128A0D /* AuthService.swift in Sources */,
@@ -585,15 +535,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				85CC90A32AF43FBC008410E4 /* NimbleAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		85CC90A42AF43FBC008410E4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				85CC90AD2AF43FBC008410E4 /* NimbleAppUITests.swift in Sources */,
-				85CC90AF2AF43FBC008410E4 /* NimbleAppUITestsLaunchTests.swift in Sources */,
+				8565B6D92AF9ECB700EA8486 /* AuthProcessTests.swift in Sources */,
+				8565B6DB2AFA23ED00EA8486 /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,11 +547,6 @@
 			isa = PBXTargetDependency;
 			target = 85CC90882AF43FBB008410E4 /* NimbleApp */;
 			targetProxy = 85CC909F2AF43FBC008410E4 /* PBXContainerItemProxy */;
-		};
-		85CC90AA2AF43FBC008410E4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 85CC90882AF43FBB008410E4 /* NimbleApp */;
-			targetProxy = 85CC90A92AF43FBC008410E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -834,42 +772,6 @@
 			};
 			name = Release;
 		};
-		85CC90B92AF43FBC008410E4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D4W3226HQ5;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thonnygeek.NimbleAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = NimbleApp;
-			};
-			name = Debug;
-		};
-		85CC90BA2AF43FBC008410E4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = D4W3226HQ5;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.thonnygeek.NimbleAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = NimbleApp;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -896,15 +798,6 @@
 			buildConfigurations = (
 				85CC90B62AF43FBC008410E4 /* Debug */,
 				85CC90B72AF43FBC008410E4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		85CC90B82AF43FBC008410E4 /* Build configuration list for PBXNativeTarget "NimbleAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				85CC90B92AF43FBC008410E4 /* Debug */,
-				85CC90BA2AF43FBC008410E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

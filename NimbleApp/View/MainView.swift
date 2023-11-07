@@ -11,10 +11,10 @@ struct MainView: View {
     
     @StateObject var viewModel: MainViewModel
     
-    @StateObject var state = WelcomeFlowState()
+//    @StateObject var state = WelcomeFlowState()
     
     var body: some View {
-        WelcomeFlowCoordinator(state: state, content: content)
+        WelcomeFlowCoordinator(state: viewModel.welcomeFlowState, content: content)
     }
     
     @ViewBuilder private func content() -> some View {
@@ -62,7 +62,7 @@ struct MainView: View {
             if UserManager.shared.isUserAuthorized {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     print("UserManager.shared.accessToken: \(String(describing: UserManager.shared.accessToken))")
-                    openHome()
+                    viewModel.openHome()
                 }
             }
         }
@@ -110,9 +110,7 @@ struct MainView: View {
             }
             
             Button {
-                viewModel.mainButtonAction {
-                    openHome()
-                }
+                viewModel.mainButtonAction()
             } label: {
                 Text(viewModel.showPasswordRecoveryView ? "Reset" : "Log In")
                     .font(.neuzeitSemiBold(17))
@@ -130,14 +128,14 @@ struct MainView: View {
         .frame(width: Constants.Sizes.width * 0.9)
     }
     
-    private func openHome() {
-        state.coverPath.append(WelcomeLink.home)
-    }
+//    private func openHome() {
+//        state.coverPath.append(WelcomeLink.home)
+//    }
 }
 
 #Preview {
     
-    MainView(viewModel: MainViewModel())
+    MainView(viewModel: MainViewModel(welcomeFlowState: WelcomeFlowState(), authService: AuthService()))
         .onAppear {
 //            UserManager.shared.authorize(access_token: "NuyBuY3BP4wYrc9AS5mHJP7DDvZLTn-zUG68FGydOXI", expires_in: "", refresh_token: "")
         }

@@ -13,11 +13,11 @@ struct NimbleAppApp: App {
     
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
     
-    var mainViewModel = MainViewModel()
+    @ObservedObject var welcomeFlowState = WelcomeFlowState()
 
     var body: some Scene {
         WindowGroup {
-            MainView(viewModel: mainViewModel)
+            MainView(viewModel: MainViewModel(welcomeFlowState: welcomeFlowState, authService: AuthService()))
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

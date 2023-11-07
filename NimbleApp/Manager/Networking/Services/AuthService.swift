@@ -11,7 +11,7 @@ import Alamofire
 
 protocol AuthServiceProtocol {
     func login(params: Parameters) -> AnyPublisher<LoginResponse, Never>
-    func passwordRecovery(params: Parameters) -> AnyPublisher<, Never>
+    func passwordRecovery(email: String) -> AnyPublisher<PasswordRecoveryResponse, Never>
 }
 
 class AuthService: AuthServiceProtocol {
@@ -28,5 +28,23 @@ class AuthService: AuthServiceProtocol {
             .eraseToAnyPublisher()
     }
     
-    func passwordRecovery(params: Parameters) -> AnyPublisher<, Never>
+    func passwordRecovery(email: String) -> AnyPublisher<PasswordRecoveryResponse, Never> {
+        
+        let params: Parameters = [
+            "user" : [
+                "email" : email
+            ]
+        ]
+        
+        return AF.request(AuthRouter.passwordRecovery(parameters: params))
+            .publishDecodable(type: PasswordRecoveryResponse.self)
+            .compactMap { result in
+                guard let result = result.value else {
+                    //                    fatalError("ERROR FATAL: \(result.error)")
+                    return nil
+                }
+                return result
+            }
+            .eraseToAnyPublisher()
+    }
 }

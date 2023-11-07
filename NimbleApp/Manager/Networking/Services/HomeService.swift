@@ -12,6 +12,7 @@ import Alamofire
 protocol HomeServiceProtocol {
     func getSurveys(page: Int, perPage: Int) -> AnyPublisher<SurveyListResponse, Never>
     func refreshToken() -> AnyPublisher<LoginResponse, Never>
+    func getUserProfile() -> AnyPublisher<UserProfileResponse, Never>
 }
 
 class HomeService: HomeServiceProtocol {
